@@ -1,6 +1,9 @@
 # email-parser
 
 [![Build Status](https://travis-ci.org/omegavesko/email-parser.svg?branch=master)](https://travis-ci.org/omegavesko/email-parser)
+[![Packagist Version](https://img.shields.io/packagist/v/omegavesko/email-parser.svg)](https://packagist.org/packages/omegavesko/email-parser)
+[![Packagist](https://img.shields.io/packagist/dm/omegavesko/email-parser.svg)](https://packagist.org/packages/omegavesko/email-parser)
+![GitHub](https://img.shields.io/github/license/omegavesko/email-parser.svg)
 
 `email-parser` is a PHP library that makes it easy to get various information 
 about a given email address.
