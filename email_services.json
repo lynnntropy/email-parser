@@ -1,6 +1,6 @@
 [
   {
-    "name": "GMail",
+    "name": "Gmail",
     "domains": ["gmail.com", "googlemail.com"],
     "webmailUrl": "https://mail.google.com/"
   },
@@ -8,5 +8,35 @@
     "name": "Yahoo Mail",
     "domains": ["yahoo.com"],
     "webmailUrl": "https://mail.yahoo.com/"
+  },
+  {
+    "name": "GMX.com",
+    "domains": ["gmx.com"],
+    "webmailUrl": "https://www.gmx.com/"
+  },
+  {
+    "name": "AOL Mail",
+    "domains": ["aol.com"],
+    "webmailUrl": "http://mail.aol.com/"
+  },
+  {
+    "name": "mail.com",
+    "domains": ["mail.com"],
+    "webmailUrl": "https://www.mail.com/"
+  },
+  {
+    "name": "Mail.ru",
+    "domains": ["mail.ru"],
+    "webmailUrl": "https://e.mail.ru/"
+  },
+  {
+    "name": "Outlook.com",
+    "domains": ["outlook.com"],
+    "webmailUrl": "https://outlook.live.com/"
+  },
+  {
+    "name": "ProtonMail",
+    "domains": ["protonmail.com", "protonmail.ch"],
+    "webmailUrl": "https://mail.protonmail.com/"
   }
 ]
