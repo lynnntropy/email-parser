@@ -1,7 +1,12 @@
 [
   {
     "name": "GMail",
-    "domains": ["gmail.com"],
+    "domains": ["gmail.com", "googlemail.com"],
     "webmailUrl": "https://mail.google.com/"
+  },
+  {
+    "name": "Yahoo Mail",
+    "domains": ["yahoo.com"],
+    "webmailUrl": "https://mail.yahoo.com/"
   }
 ]
