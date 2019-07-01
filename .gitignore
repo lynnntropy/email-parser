@@ -1,0 +1,5 @@
+# IntelliJ IDEA project folder
+.idea/
+
+# Composer dependencies
+vendor/

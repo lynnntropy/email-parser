@@ -1,0 +1,7 @@
+[
+  {
+    "name": "GMail",
+    "domains": ["gmail.com"],
+    "webmailUrl": "https://mail.google.com/"
+  }
+]
