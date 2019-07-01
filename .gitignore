@@ -3,3 +3,6 @@
 
 # Composer dependencies
 vendor/
+
+# PHPUnit
+.phpunit.result.cache
