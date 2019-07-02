@@ -2,6 +2,9 @@
 
 namespace OmegaVesko\EmailParser;
 
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\EmailValidation;
+use Egulias\EmailValidator\Validation\RFCValidation;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -16,6 +19,16 @@ class EmailParser
     private $logger;
 
     /**
+     * @var EmailValidator
+     */
+    private $emailValidator;
+
+    /**
+     * @var EmailValidation
+     */
+    private $emailValidation;
+
+    /**
      * @var EmailServiceInformation[]
      */
     private $emailServices;
@@ -24,11 +37,18 @@ class EmailParser
      * EmailParser constructor.
      *
      * @param LoggerInterface|null $logger
+     * @param EmailValidation|null $emailValidation
      */
-    public function __construct(LoggerInterface $logger = null)
+    public function __construct(LoggerInterface $logger = null, EmailValidation $emailValidation = null)
     {
         $this->logger = $logger;
+        $this->emailValidator = new EmailValidator();
 
+        if ($emailValidation !== null) {
+            $this->emailValidation = $emailValidation;
+        } else {
+            $this->emailValidation = new RFCValidation();
+        }
 
         $serializer = new Serializer(
             [new GetSetMethodNormalizer(), new ArrayDenormalizer()],
@@ -50,8 +70,12 @@ class EmailParser
      */
     public function parseEmail(string $email)
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new \InvalidArgumentException("The email '$email' is invalid (according to RFC 822 and/or FILTER_VALIDATE_EMAIL).");
+        if (!$this->emailValidator->isValid($email, $this->emailValidation)) {
+            throw new \InvalidArgumentException(
+                "The email '$email' is invalid.",
+                0,
+                $this->emailValidator->getError()
+            );
         }
 
         preg_match('/^(.+)@([^@]+)$/', $email, $matches);

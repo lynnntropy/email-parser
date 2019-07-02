@@ -9,7 +9,7 @@
             <directory suffix=".php">./src</directory>
             <exclude>
                 <directory>./vendor</directory>
-            </exclude>>
+            </exclude>
         </whitelist>
     </filter>
     <logging>

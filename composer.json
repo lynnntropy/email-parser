@@ -18,7 +18,8 @@
         "ext-json": "*",
         "symfony/serializer": "^4.3",
         "symfony/property-access": "^4.3",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "egulias/email-validator": "^2.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3",
