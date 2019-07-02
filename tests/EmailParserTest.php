@@ -59,10 +59,11 @@ class EmailParserTest extends TestCase
         $emails = $parser->parseEmails([
             'omegavesko@gmail.com',
             'test@test.dev',
-            'asopdkasopkd@ekfewfeef'
+            'asopdkasopkd@ekfewfeef',
+            'asdasdasdasdasd'
         ]);
 
-        $this->assertCount(2, $emails);
+        $this->assertCount(3, $emails);
         $this->assertContainsOnlyInstancesOf(EmailInformation::class, $emails);
     }
 }
