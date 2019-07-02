@@ -29,7 +29,7 @@ about an email address.
 composer require omegavesko/email-parser
 ```
 
-### Usage
+## Usage
 
 To use the parser, create an instance of the `EmailParser` class, and use the 
 `parseEmail()` and `parseEmails()` methods to parse emails into `EmailInformation` 
@@ -51,7 +51,7 @@ $emailInformation->getEmailService(); // EmailServiceInformation instance (or nu
 
 ```
 
-#### Getting email provider information
+### Getting email provider information
 
 If an email uses the domain of a recognized popular public email provider
 (e.g. Gmail), `email-parser` will give you its name, the domains it knows about,
@@ -78,7 +78,7 @@ $emailInformation->getEmailService()->getWebmailUrl(); // 'https://mail.google.c
 If the email isn't from a public email provider, or one `email-parser` doesn't 
 recognize, `getEmailService()` will return `null`.
 
-#### Configuration
+### Configuration
 
 While `email-parser` works perfectly fine out of the box with zero configuration,
 there's a few things you can configure to better integrate it into your codebase,
