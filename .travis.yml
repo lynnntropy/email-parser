@@ -1,6 +1,18 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7d83a05da0945266de8766462e5e9682341702f5da0b956b409504bb1a42d7d0
+
 language: php
 php:
   - '7.2'
   - '7.3'
 
 install: composer install
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
