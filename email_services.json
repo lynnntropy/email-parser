@@ -31,8 +31,8 @@
   },
   {
     "name": "Outlook.com",
-    "domains": ["outlook.com"],
-    "webmailUrl": "https://outlook.live.com/"
+    "domains": ["outlook.com", "hotmail.com", "live.com"],
+    "webmailUrl": "https://outlook.live.com/mail/inbox"
   },
   {
     "name": "ProtonMail",
