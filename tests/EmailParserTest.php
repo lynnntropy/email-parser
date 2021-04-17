@@ -1,6 +1,5 @@
 <?php
 
-
 use OmegaVesko\EmailParser\EmailInformation;
 use OmegaVesko\EmailParser\EmailParser;
 use PHPUnit\Framework\TestCase;
@@ -11,12 +10,12 @@ class EmailParserTest extends TestCase
     {
         $parser = new EmailParser();
 
-        $info = $parser->parseEmail('omegavesko@gmail.com');
+        $info = $parser->parseEmail("omegavesko@gmail.com");
 
-        $this->assertEquals('omegavesko@gmail.com', $info->getEmail());
-        $this->assertEquals('omegavesko', $info->getLocalPart());
-        $this->assertEquals('gmail.com', $info->getDomain());
-        $this->assertNotEmpty($info->getEmailService());
+        $this->assertEquals("omegavesko@gmail.com", $info->email);
+        $this->assertEquals("omegavesko", $info->localPart);
+        $this->assertEquals("gmail.com", $info->domain);
+        $this->assertNotEmpty($info->emailService);
     }
 
     /**
@@ -31,24 +30,24 @@ class EmailParserTest extends TestCase
 
         $info = $parser->parseEmail($email);
 
-        $this->assertNotEmpty($info->getEmail());
-        $this->assertNotEmpty($info->getLocalPart());
-        $this->assertNotEmpty($info->getDomain());
+        $this->assertNotEmpty($info->email);
+        $this->assertNotEmpty($info->localPart);
+        $this->assertNotEmpty($info->domain);
 
         if ($shouldFindService) {
-            $this->assertNotNull($info->getEmailService());
+            $this->assertNotNull($info->emailService);
         } else {
-            $this->assertNull($info->getEmailService());
+            $this->assertNull($info->emailService);
         }
     }
 
     public function emailProvider()
     {
         return [
-            ['iojdioejfd@gmail.com', true],
-            ['iojdioejfd@googlemail.com', true],
-            ['test@yahoo.com', true],
-            ['test@nonexistent.test', false]
+            ["iojdioejfd@gmail.com", true],
+            ["iojdioejfd@googlemail.com", true],
+            ["test@yahoo.com", true],
+            ["test@nonexistent.test", false],
         ];
     }
 
@@ -57,10 +56,10 @@ class EmailParserTest extends TestCase
         $parser = new EmailParser();
 
         $emails = $parser->parseEmails([
-            'omegavesko@gmail.com',
-            'test@test.dev',
-            'asopdkasopkd@ekfewfeef',
-            'asdasdasdasdasd'
+            "omegavesko@gmail.com",
+            "test@test.dev",
+            "asopdkasopkd@ekfewfeef",
+            "asdasdasdasdasd",
         ]);
 
         $this->assertCount(3, $emails);

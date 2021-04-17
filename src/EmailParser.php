@@ -8,30 +8,17 @@ use Egulias\EmailValidator\Validation\RFCValidation;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 class EmailParser
 {
-    /**
-     * @var LoggerInterface|null
-     */
-    private $logger;
+    private ?LoggerInterface $logger;
+    private EmailValidator $emailValidator;
+    private EmailValidation $emailValidation;
 
-    /**
-     * @var EmailValidator
-     */
-    private $emailValidator;
-
-    /**
-     * @var EmailValidation
-     */
-    private $emailValidation;
-
-    /**
-     * @var EmailServiceInformation[]
-     */
-    private $emailServices;
+    /** @var EmailServiceInformation[] */
+    private array $emailServices;
 
     /**
      * EmailParser constructor.
@@ -39,8 +26,10 @@ class EmailParser
      * @param LoggerInterface|null $logger
      * @param EmailValidation|null $emailValidation
      */
-    public function __construct(LoggerInterface $logger = null, EmailValidation $emailValidation = null)
-    {
+    public function __construct(
+        LoggerInterface $logger = null,
+        EmailValidation $emailValidation = null
+    ) {
         $this->logger = $logger;
         $this->emailValidator = new EmailValidator();
 
@@ -51,14 +40,14 @@ class EmailParser
         }
 
         $serializer = new Serializer(
-            [new GetSetMethodNormalizer(), new ArrayDenormalizer()],
-            [new JsonEncoder()]
+            [new ObjectNormalizer(), new ArrayDenormalizer()],
+            [new JsonEncoder()],
         );
 
         $this->emailServices = $serializer->deserialize(
-            file_get_contents(__DIR__ . '/../email_services.json'),
-            EmailServiceInformation::class . '[]',
-            'json'
+            file_get_contents(__DIR__ . "/../email_services.json"),
+            EmailServiceInformation::class . "[]",
+            "json",
         );
     }
 
@@ -74,7 +63,7 @@ class EmailParser
             throw new \InvalidArgumentException(
                 "The email '$email' is invalid.",
                 0,
-                $this->emailValidator->getError()
+                $this->emailValidator->getError(),
             );
         }
 
@@ -83,10 +72,12 @@ class EmailParser
         $domain = $matches[2];
 
         $emailInformation = new EmailInformation($email);
-        $emailInformation->setLocalPart($localPart);
-        $emailInformation->setDomain($domain);
+        $emailInformation->localPart = $localPart;
+        $emailInformation->domain = $domain;
 
-        $emailInformation->setEmailService($this->getEmailServiceInformationForDomain($domain));
+        $emailInformation->emailService = $this->getEmailServiceInformationForDomain(
+            $domain,
+        );
 
         return $emailInformation;
     }
@@ -106,7 +97,9 @@ class EmailParser
                 $output[] = $this->parseEmail($email);
             } catch (\Throwable $t) {
                 if ($this->logger !== null) {
-                    $this->logger->error("Failed to parse email '$email'", ['exception' => $t]);
+                    $this->logger->error("Failed to parse email '$email'", [
+                        "exception" => $t,
+                    ]);
                 }
             }
         }
@@ -117,7 +110,7 @@ class EmailParser
     private function getEmailServiceInformationForDomain(string $domain)
     {
         foreach ($this->emailServices as $service) {
-            if (in_array($domain, $service->getDomains())) {
+            if (in_array($domain, $service->domains)) {
                 return $service;
             }
         }
