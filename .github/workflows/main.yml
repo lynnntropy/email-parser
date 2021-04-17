@@ -1,0 +1,32 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Test on PHP ${{ matrix.php }} and ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        php: ["7.4", "8.0", "latest"]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@2.10.0
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run tests
+        run: php vendor/bin/phpunit
+
+      - name: Publish code coverage
+        if: ${{ github.ref == 'refs/heads/master' && matrix.php == '8.0' && matrix.os == 'ubuntu-latest' }}
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
