@@ -1,10 +1,9 @@
 # email-parser
 
-[![Build Status](https://travis-ci.org/omegavesko/email-parser.svg?branch=master)](https://travis-ci.org/omegavesko/email-parser)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f49d82f0fda12e94536a/maintainability)](https://codeclimate.com/github/omegavesko/email-parser/maintainability)
+[![CI](https://github.com/omegavesko/email-parser/actions/workflows/main.yml/badge.svg)](https://github.com/omegavesko/email-parser/actions/workflows/main.yml)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f49d82f0fda12e94536a/test_coverage)](https://codeclimate.com/github/omegavesko/email-parser/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f49d82f0fda12e94536a/maintainability)](https://codeclimate.com/github/omegavesko/email-parser/maintainability)
 [![Packagist Version](https://img.shields.io/packagist/v/omegavesko/email-parser.svg)](https://packagist.org/packages/omegavesko/email-parser)
-[![Packagist](https://img.shields.io/packagist/dm/omegavesko/email-parser.svg)](https://packagist.org/packages/omegavesko/email-parser)
 ![GitHub](https://img.shields.io/github/license/omegavesko/email-parser.svg)
 
 `email-parser` is a PHP library that makes it easy to get various information
