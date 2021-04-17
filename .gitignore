@@ -9,3 +9,5 @@ vendor/
 
 # Build artifacts
 build/
+
+node_modules/

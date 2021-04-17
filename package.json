@@ -1,0 +1,12 @@
+{
+  "name": "email-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/omegavesko/email-parser.git",
+  "author": "Veselin Romić <omegavesko@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.16.2",
+    "prettier": "^2.2.1"
+  }
+}
