@@ -17,9 +17,7 @@ class EmailParser
     private EmailValidator $emailValidator;
     private EmailValidation $emailValidation;
 
-    /**
-     * @var EmailServiceInformation[]
-     */
+    /** @var EmailServiceInformation[] */
     private array $emailServices;
 
     /**

@@ -5,9 +5,7 @@ namespace OmegaVesko\EmailParser;
 class EmailServiceInformation
 {
     public string $name;
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public array $domains;
     public string $webmailUrl;
 

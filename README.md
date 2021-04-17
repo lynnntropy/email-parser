@@ -41,13 +41,12 @@ use OmegaVesko\EmailParser\EmailParser;
 
 $parser = new EmailParser();
 
-$emailInformation = $parser->parseEmail('example@test.dev');
+$emailInformation = $parser->parseEmail("example@test.dev");
 
-$emailInformation->getEmail(); // 'example@test.dev'
-$emailInformation->getDomain(); //  'test.dev'
-$emailInformation->getLocalPart(); // 'example'
-$emailInformation->getEmailService(); // EmailServiceInformation instance (or null)
-
+$emailInformation->email; // 'example@test.dev'
+$emailInformation->domain; //  'test.dev'
+$emailInformation->localPart; // 'example'
+$emailInformation->emailService; // EmailServiceInformation instance (or null)
 ```
 
 ### Getting email provider information
@@ -67,11 +66,11 @@ use OmegaVesko\EmailParser\EmailParser;
 
 $parser = new EmailParser();
 
-$emailInformation = $parser->parseEmail('example@gmail.com');
+$emailInformation = $parser->parseEmail("example@gmail.com");
 
-$emailInformation->getEmailService()->getName(); // 'Gmail'
-$emailInformation->getEmailService()->getDomains(); // ['gmail.com', 'googlemail.com']
-$emailInformation->getEmailService()->getWebmailUrl(); // 'https://mail.google.com/'
+$emailInformation->emailService->name; // 'Gmail'
+$emailInformation->emailService->domains; // ['gmail.com', 'googlemail.com']
+$emailInformation->emailService->webmailUrl; // 'https://mail.google.com/'
 ```
 
 If the email isn't from a public email provider, or one `email-parser` doesn't
