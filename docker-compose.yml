@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  php:
+    image: php:7.4-cli
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+  composer:
+    image: composer:2
+    volumes:
+      - ./:/app
