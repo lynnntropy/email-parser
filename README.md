@@ -7,7 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/dm/omegavesko/email-parser.svg)](https://packagist.org/packages/omegavesko/email-parser)
 ![GitHub](https://img.shields.io/github/license/omegavesko/email-parser.svg)
 
-`email-parser` is a PHP library that makes it easy to get various information 
+`email-parser` is a PHP library that makes it easy to get various information
 about an email address.
 
 ## Features
@@ -20,7 +20,7 @@ about an email address.
 
 ### Prerequisites
 
-- PHP >= 7.2
+- PHP >= 7.4
 - [Composer](https://getcomposer.org/)
 
 ### Installing
@@ -31,8 +31,8 @@ composer require omegavesko/email-parser
 
 ## Usage
 
-To use the parser, create an instance of the `EmailParser` class, and use the 
-`parseEmail()` and `parseEmails()` methods to parse emails into `EmailInformation` 
+To use the parser, create an instance of the `EmailParser` class, and use the
+`parseEmail()` and `parseEmails()` methods to parse emails into `EmailInformation`
 instances.
 
 ```php
@@ -75,29 +75,29 @@ $emailInformation->getEmailService()->getDomains(); // ['gmail.com', 'googlemail
 $emailInformation->getEmailService()->getWebmailUrl(); // 'https://mail.google.com/'
 ```
 
-If the email isn't from a public email provider, or one `email-parser` doesn't 
+If the email isn't from a public email provider, or one `email-parser` doesn't
 recognize, `getEmailService()` will return `null`.
 
 ### Configuration
 
 While `email-parser` works perfectly fine out of the box with zero configuration,
 there's a few things you can configure to better integrate it into your codebase,
-or to adapt it to your needs. 
+or to adapt it to your needs.
 
 The `EmailParser` constructor takes the following optional arguments:
 
 - `$logger`: An instance of `Psr\Log\LoggerInterface`. `email-parser` will use this to log
-  things like non-fatal warnings.  
+  things like non-fatal warnings.
 - `$emailValidation`: An instance of `Egulias\EmailValidator\Validation\EmailValidation`.
   `email-parser` will use this validation to validate all emails it parses. See the
   [EmailValidator docs](https://github.com/egulias/EmailValidator#available-validations)
-  for available validations. 
-  
+  for available validations.
+
   If left blank, a simple `RFCValidation` will be used as
   a sane default.
 
+## Development
 
-## Development 
 ### Running the tests
 
 ```bash
@@ -106,9 +106,9 @@ vendor/bin/phpunit
 
 ## Authors
 
-* **Veselin Romić (omegavesko@gmail.com)**
+- **Veselin Romić (omegavesko@gmail.com)**
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
 file for details.
